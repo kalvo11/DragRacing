@@ -5,6 +5,8 @@
  */
 package dragracingproject;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author bbsuser
@@ -27,6 +29,7 @@ public class DragRaceForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         pbFuelPlayer1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,6 +44,19 @@ public class DragRaceForm extends javax.swing.JFrame {
         btnBreakeplayer1 = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
         canvas2 = new java.awt.Canvas();
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 584, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 370, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +124,11 @@ public class DragRaceForm extends javax.swing.JFrame {
                 btnBreakeplayer1ActionPerformed(evt);
             }
         });
+
+        canvas1.setBackground(new java.awt.Color(51, 102, 255));
+        canvas1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        canvas2.setBackground(new java.awt.Color(255, 0, 102));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,18 +220,24 @@ public class DragRaceForm extends javax.swing.JFrame {
 
     private void btnAccelerationPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccelerationPlayer2ActionPerformed
         // TODO add your handling code here:
+        pbFuelPlayer2.setValue(pbFuelPlayer2.getValue()-2);
+        auto1.speed = auto1.speed +1;
     }//GEN-LAST:event_btnAccelerationPlayer2ActionPerformed
 
     private void btnAccelerationplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccelerationplayer1ActionPerformed
         // TODO add your handling code here:
+        pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-2);
+        auto2.speed = auto2.speed +1;
     }//GEN-LAST:event_btnAccelerationplayer1ActionPerformed
 
     private void btncontinuplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontinuplayer1ActionPerformed
         // TODO add your handling code here:
+        pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-1);
     }//GEN-LAST:event_btncontinuplayer1ActionPerformed
 
     private void btnBreakeplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakeplayer1ActionPerformed
         // TODO add your handling code here:
+        auto1.speed = auto1.speed-1;
     }//GEN-LAST:event_btnBreakeplayer1ActionPerformed
 
     private void btnContinuePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuePlayer2ActionPerformed
@@ -220,6 +247,7 @@ public class DragRaceForm extends javax.swing.JFrame {
 
     private void btnBreakePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakePlayer2ActionPerformed
         // TODO add your handling code here:
+        auto2.speed = auto2.speed-1;
     }//GEN-LAST:event_btnBreakePlayer2ActionPerformed
 
     public void startmethod()
@@ -228,6 +256,11 @@ public class DragRaceForm extends javax.swing.JFrame {
       pbFuelPlayer2.setValue(100);
       lblPlayer1Name.setText("asd1");
       lblPlayer2Name.setText("asd2");
+      spieler1.setcar(auto1);
+      spieler2.setcar(auto2);
+      auto1.speed = 0;
+      auto2.speed = 0;
+      
     }
     
     /**
@@ -235,6 +268,9 @@ public class DragRaceForm extends javax.swing.JFrame {
      */
     private Spieler spieler2 = new Spieler("asd2");
     private Spieler spieler1 = new Spieler("asd1");
+    private Auto auto1 = new Auto();
+    private Auto auto2 = new Auto();
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -261,7 +297,9 @@ public class DragRaceForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DragRaceForm().setVisible(true);
+                DragRaceForm dform = new DragRaceForm();
+                dform.setVisible(true);
+                dform.startmethod();
             }           
         });       
     }
@@ -277,6 +315,7 @@ public class DragRaceForm extends javax.swing.JFrame {
     private javax.swing.JButton btncontinuplayer1;
     private java.awt.Canvas canvas1;
     private java.awt.Canvas canvas2;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPlayer1Name;
