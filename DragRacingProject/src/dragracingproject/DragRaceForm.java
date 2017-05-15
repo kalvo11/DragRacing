@@ -29,7 +29,10 @@ public class DragRaceForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        loginFrame = new javax.swing.JFrame();
+        tfPlayer1 = new javax.swing.JTextField();
+        tfPlayer2 = new javax.swing.JTextField();
+        btnContenue = new javax.swing.JButton();
         pbFuelPlayer1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,20 +48,44 @@ public class DragRaceForm extends javax.swing.JFrame {
         canvas1 = new java.awt.Canvas();
         canvas2 = new java.awt.Canvas();
 
-        jInternalFrame1.setVisible(true);
+        loginFrame.setMinimumSize(new java.awt.Dimension(323, 194));
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 584, Short.MAX_VALUE)
+        btnContenue.setText("Continue");
+        btnContenue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContenueActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginFrameLayout = new javax.swing.GroupLayout(loginFrame.getContentPane());
+        loginFrame.getContentPane().setLayout(loginFrameLayout);
+        loginFrameLayout.setHorizontalGroup(
+            loginFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginFrameLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(tfPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tfPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginFrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnContenue)
+                .addGap(121, 121, 121))
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+        loginFrameLayout.setVerticalGroup(
+            loginFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginFrameLayout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(loginFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
+                .addComponent(btnContenue)
+                .addGap(47, 47, 47))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(648, 624));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Fuel");
@@ -222,54 +249,82 @@ public class DragRaceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         pbFuelPlayer2.setValue(pbFuelPlayer2.getValue()-2);
         auto1.speed = auto1.speed +1;
+        Player2ready = true;
     }//GEN-LAST:event_btnAccelerationPlayer2ActionPerformed
 
     private void btnAccelerationplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccelerationplayer1ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-2);
         auto2.speed = auto2.speed +1;
+        Player1ready = true;
     }//GEN-LAST:event_btnAccelerationplayer1ActionPerformed
 
     private void btncontinuplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontinuplayer1ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-1);
+        Player1ready = true;
     }//GEN-LAST:event_btncontinuplayer1ActionPerformed
 
     private void btnBreakeplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakeplayer1ActionPerformed
         // TODO add your handling code here:
         auto1.speed = auto1.speed-1;
+        Player1ready = true;
     }//GEN-LAST:event_btnBreakeplayer1ActionPerformed
 
     private void btnContinuePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuePlayer2ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer2.setValue(pbFuelPlayer2.getValue()-1);
+        Player2ready = true;
     }//GEN-LAST:event_btnContinuePlayer2ActionPerformed
 
     private void btnBreakePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakePlayer2ActionPerformed
         // TODO add your handling code here:
         auto2.speed = auto2.speed-1;
+        Player2ready = true;
     }//GEN-LAST:event_btnBreakePlayer2ActionPerformed
 
-    public void startmethod()
+    private void btnContenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContenueActionPerformed
+        // TODO add your handling code here:
+        spieler1 = new Spieler(tfPlayer1.getText());
+        spieler2 = new Spieler(tfPlayer2.getText());
+        dform.setVisible(true);
+        dform.loginFrame.setVisible(false);
+        startmethod();
+    }//GEN-LAST:event_btnContenueActionPerformed
+
+    private void startmethod()
     {
       pbFuelPlayer1.setValue(100);
       pbFuelPlayer2.setValue(100);
-      lblPlayer1Name.setText("asd1");
-      lblPlayer2Name.setText("asd2");
+      lblPlayer1Name.setText(tfPlayer1.getText());
+      lblPlayer2Name.setText(tfPlayer2.getText());
       spieler1.setcar(auto1);
       spieler2.setcar(auto2);
       auto1.speed = 0;
-      auto2.speed = 0;
-      
+      auto2.speed = 0;     
+    }
+    
+    private void ContinueMethod()
+    {
+        if(Player1ready == true && Player2ready == true)
+        {
+            Player1ready = false;
+            Player2ready = false;
+            
+        }
+        
     }
     
     /**
      * @param args the command line arguments
      */
-    private Spieler spieler2 = new Spieler("asd2");
-    private Spieler spieler1 = new Spieler("asd1");
+    private boolean Player1ready;
+    private boolean Player2ready;
+    private Spieler spieler1;
+    private Spieler spieler2;
     private Auto auto1 = new Auto();
     private Auto auto2 = new Auto();
+    private static DragRaceForm dform;
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -297,9 +352,9 @@ public class DragRaceForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DragRaceForm dform = new DragRaceForm();
-                dform.setVisible(true);
-                dform.startmethod();
+                dform = new DragRaceForm();
+                dform.setVisible(false);               
+                dform.loginFrame.setVisible(true);
             }           
         });       
     }
@@ -311,16 +366,19 @@ public class DragRaceForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAccelerationplayer1;
     private javax.swing.JButton btnBreakePlayer2;
     private javax.swing.JButton btnBreakeplayer1;
+    private javax.swing.JButton btnContenue;
     private javax.swing.JButton btnContinuePlayer2;
     private javax.swing.JButton btncontinuplayer1;
     private java.awt.Canvas canvas1;
     private java.awt.Canvas canvas2;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPlayer1Name;
     private javax.swing.JLabel lblPlayer2Name;
+    private javax.swing.JFrame loginFrame;
     private javax.swing.JProgressBar pbFuelPlayer1;
     private javax.swing.JProgressBar pbFuelPlayer2;
+    private javax.swing.JTextField tfPlayer1;
+    private javax.swing.JTextField tfPlayer2;
     // End of variables declaration//GEN-END:variables
 }
