@@ -9,8 +9,8 @@ package dragracingproject;
  *
  * @author bbsuser
  */
-public class Spieler {
-   
+public class Spieler 
+{
     private String name;
     
     public Spieler(String name)
