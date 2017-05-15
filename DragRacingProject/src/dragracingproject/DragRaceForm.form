@@ -193,6 +193,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JProgressBar" name="pbFuelPlayer1">
+      <Properties>
+        <Property name="maximum" type="int" value="25"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -214,6 +217,7 @@
     </Component>
     <Component class="javax.swing.JProgressBar" name="pbFuelPlayer2">
       <Properties>
+        <Property name="maximum" type="int" value="25"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="name" type="java.lang.String" value="pbPlayer2" noResource="true"/>
       </Properties>

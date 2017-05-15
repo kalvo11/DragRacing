@@ -87,6 +87,8 @@ public class DragRaceForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(648, 624));
 
+        pbFuelPlayer1.setMaximum(25);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Fuel");
         jLabel1.setName("lblFuelPlayer1"); // NOI18N
@@ -95,6 +97,7 @@ public class DragRaceForm extends javax.swing.JFrame {
         jLabel2.setText("Fuel");
         jLabel2.setName("lblFuelPlayer2"); // NOI18N
 
+        pbFuelPlayer2.setMaximum(25);
         pbFuelPlayer2.setToolTipText("");
         pbFuelPlayer2.setName("pbPlayer2"); // NOI18N
 
@@ -249,38 +252,49 @@ public class DragRaceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         pbFuelPlayer2.setValue(pbFuelPlayer2.getValue()-2);
         auto1.speed = auto1.speed +1;
-        Player2ready = true;
+                if(pbFuelPlayer2.getValue() <= 0)
+        {
+            Lostmethod(tfPlayer2.getText());
+        }
     }//GEN-LAST:event_btnAccelerationPlayer2ActionPerformed
 
     private void btnAccelerationplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccelerationplayer1ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-2);
         auto2.speed = auto2.speed +1;
-        Player1ready = true;
+                if(pbFuelPlayer1.getValue() <= 0)
+        {
+            Lostmethod(tfPlayer1.getText());
+        }
     }//GEN-LAST:event_btnAccelerationplayer1ActionPerformed
 
     private void btncontinuplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncontinuplayer1ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer1.setValue(pbFuelPlayer1.getValue()-1);
-        Player1ready = true;
+                if(pbFuelPlayer1.getValue() <= 0)
+        {
+            Lostmethod(tfPlayer1.getText());
+        }
     }//GEN-LAST:event_btncontinuplayer1ActionPerformed
 
     private void btnBreakeplayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakeplayer1ActionPerformed
         // TODO add your handling code here:
         auto1.speed = auto1.speed-1;
-        Player1ready = true;
     }//GEN-LAST:event_btnBreakeplayer1ActionPerformed
 
     private void btnContinuePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuePlayer2ActionPerformed
         // TODO add your handling code here:
         pbFuelPlayer2.setValue(pbFuelPlayer2.getValue()-1);
-        Player2ready = true;
+        if(pbFuelPlayer2.getValue() <= 0)
+        {
+            Lostmethod(tfPlayer2.getText());
+        }
+            
     }//GEN-LAST:event_btnContinuePlayer2ActionPerformed
 
     private void btnBreakePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakePlayer2ActionPerformed
         // TODO add your handling code here:
         auto2.speed = auto2.speed-1;
-        Player2ready = true;
     }//GEN-LAST:event_btnBreakePlayer2ActionPerformed
 
     private void btnContenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContenueActionPerformed
@@ -294,8 +308,8 @@ public class DragRaceForm extends javax.swing.JFrame {
 
     private void startmethod()
     {
-      pbFuelPlayer1.setValue(100);
-      pbFuelPlayer2.setValue(100);
+      pbFuelPlayer1.setValue(25);
+      pbFuelPlayer2.setValue(25);
       lblPlayer1Name.setText(tfPlayer1.getText());
       lblPlayer2Name.setText(tfPlayer2.getText());
       spieler1.setcar(auto1);
@@ -304,22 +318,16 @@ public class DragRaceForm extends javax.swing.JFrame {
       auto2.speed = 0;     
     }
     
-    private void ContinueMethod()
+    private void Lostmethod(String name)
     {
-        if(Player1ready == true && Player2ready == true)
-        {
-            Player1ready = false;
-            Player2ready = false;
-            
-        }
-        
+     System.out.println( name + " Lost");
+        dform.setVisible(false);
+        dform.loginFrame.setVisible(true);
     }
     
     /**
      * @param args the command line arguments
      */
-    private boolean Player1ready;
-    private boolean Player2ready;
     private Spieler spieler1;
     private Spieler spieler2;
     private Auto auto1 = new Auto();
