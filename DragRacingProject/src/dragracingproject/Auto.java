@@ -11,6 +11,7 @@ package dragracingproject;
  */
 public class Auto 
 {
+    public int speed;
     public Auto()
     {
         

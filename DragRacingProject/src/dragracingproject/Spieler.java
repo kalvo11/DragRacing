@@ -12,9 +12,19 @@ package dragracingproject;
 public class Spieler 
 {
     private String name;
-    
+    private Auto Auto;
     public Spieler(String name)
     {
         this.name = name;
+    }
+    
+    public void setcar(Auto auto)
+    {
+        Auto = auto;
+    }
+    
+    public Auto getcar()
+    {
+        return Auto;
     }
 }
