@@ -8,6 +8,9 @@
           <Dimension value="[323, 194]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="loginFrameWindowClosed"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -186,7 +189,7 @@
                   <Component id="canvas2" alignment="0" max="32767" attributes="0"/>
                   <Component id="canvas1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

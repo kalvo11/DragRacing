@@ -49,6 +49,11 @@ public class DragRaceForm extends javax.swing.JFrame {
         canvas2 = new java.awt.Canvas();
 
         loginFrame.setMinimumSize(new java.awt.Dimension(323, 194));
+        loginFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                loginFrameWindowClosed(evt);
+            }
+        });
 
         btnContenue.setText("Continue");
         btnContenue.addActionListener(new java.awt.event.ActionListener() {
@@ -302,9 +307,13 @@ public class DragRaceForm extends javax.swing.JFrame {
         spieler1 = new Spieler(tfPlayer1.getText());
         spieler2 = new Spieler(tfPlayer2.getText());
         dform.setVisible(true);
-        dform.loginFrame.setVisible(false);
+        loginFrame.setVisible(false);
         startmethod();
     }//GEN-LAST:event_btnContenueActionPerformed
+
+    private void loginFrameWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_loginFrameWindowClosed
+       
+    }//GEN-LAST:event_loginFrameWindowClosed
 
     private void startmethod()
     {
@@ -322,7 +331,7 @@ public class DragRaceForm extends javax.swing.JFrame {
     {
      System.out.println( name + " Lost");
         dform.setVisible(false);
-        dform.loginFrame.setVisible(true);
+        loginFrame.setVisible(true);
     }
     
     /**
